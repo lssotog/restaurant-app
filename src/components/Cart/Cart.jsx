@@ -4,7 +4,7 @@ import classes from "./Cart.module.css";
 import { Modal } from "../UI/Modal";
 import { CartItem } from "./CartItem";
 
-export const Cart = () => {
+export const Cart = ({ onClose }) => {
   const cartCtx = useContext(CartContext);
   const [showOrder, setShowOrder] = useState(false);
 
@@ -41,7 +41,23 @@ export const Cart = () => {
 
   return (
     <>
-      <Modal></Modal>
+      <Modal onClose={onClose}>
+        {cartItems}
+        <div className={classes.totalAmount}>
+          <span>Total Amount</span>
+          <span>{totalAmount}</span>
+        </div>
+        <div className={classes.actions}>
+          <button className={classes["button--alt"]} onClick={onClose}>
+            Close
+          </button>
+          {hasItems && (
+            <button className={classes.button} onClick={orderHandler}>
+              Order
+            </button>
+          )}
+        </div>
+      </Modal>
     </>
   );
 };
