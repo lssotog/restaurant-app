@@ -88,7 +88,7 @@ export const CartProvider = ({ children }) => {
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
-    clearall: clearAllItemsFromCartHandler,
+    clearAll: clearAllItemsFromCartHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>

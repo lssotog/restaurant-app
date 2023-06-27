@@ -3,6 +3,7 @@ import { CartContext } from "../../store/cart-context";
 import classes from "./Cart.module.css";
 import { Modal } from "../UI/Modal";
 import { CartItem } from "./CartItem";
+import { OrderDelivered } from "./OrderDelivered";
 
 export const Cart = ({ onClose }) => {
   const cartCtx = useContext(CartContext);
@@ -40,24 +41,28 @@ export const Cart = ({ onClose }) => {
   );
 
   return (
-    <>
-      <Modal onClose={onClose}>
-        {cartItems}
-        <div className={classes.total}>
-          <span>Total Amount</span>
-          <span>{totalAmount}</span>
-        </div>
-        <div className={classes.actions}>
-          <button className={classes["button--alt"]} onClick={onClose}>
-            Close
-          </button>
-          {hasItems && (
-            <button className={classes.button} onClick={orderHandler}>
-              Order
+    <Modal onClose={onClose}>
+      {!showOrder ? (
+        <>
+          {cartItems}
+          <div className={classes.total}>
+            <span>Total Amount</span>
+            <span>{totalAmount}</span>
+          </div>
+          <div className={classes.actions}>
+            <button className={classes["button--alt"]} onClick={onClose}>
+              Close
             </button>
-          )}
-        </div>
-      </Modal>
-    </>
+            {hasItems && (
+              <button className={classes.button} onClick={orderHandler}>
+                Order
+              </button>
+            )}
+          </div>
+        </>
+      ) : (
+        <OrderDelivered onClose={onClose} />
+      )}
+    </Modal>
   );
 };
