@@ -36,7 +36,7 @@ export const HeaderCartButton = ({ onClick }) => {
       <span className={classes.icon}>
         <CartIcon />
       </span>
-      <span>Your cart</span>
+      <span>Your Cart</span>
       <span className={classes.badge}>{numberOfCartItems}</span>
     </button>
   );

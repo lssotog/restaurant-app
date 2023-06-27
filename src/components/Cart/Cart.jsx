@@ -43,7 +43,7 @@ export const Cart = ({ onClose }) => {
     <>
       <Modal onClose={onClose}>
         {cartItems}
-        <div className={classes.totalAmount}>
+        <div className={classes.total}>
           <span>Total Amount</span>
           <span>{totalAmount}</span>
         </div>
